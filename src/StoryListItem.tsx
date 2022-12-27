@@ -178,7 +178,8 @@ export const StoryListItem = ({
 
   const swipeText =
     content?.[current]?.swipeText || props.swipeText || 'Swipe Up';
-
+  const timeLabel = content?.[current]?.timeLabel;
+  
   return (
     <GestureRecognizer
       key={key}
@@ -223,7 +224,7 @@ export const StoryListItem = ({
         <View style={styles.userContainer}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Image style={styles.avatarImage} source={{ uri: profileImage }} />
-            <Text style={styles.avatarText}>{profileName}</Text>
+            <Text style={styles.avatarText}>{profileName + ' ~ ' + timeLabel}</Text>
           </View>
           <TouchableOpacity
             onPress={() => {
