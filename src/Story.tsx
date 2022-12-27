@@ -24,6 +24,7 @@ export const Story = ({
   showAvatarText,
   avatarTextStyle,
   renderHeader,
+  onChangePage,
 }: StoryProps) => {
   const [dataState, setDataState] = useState<IUserStory[]>(data);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -69,10 +70,12 @@ export const Story = ({
         const newPage = currentPage + 1;
         if (newPage < selectedData.length) {
           setCurrentPage(newPage);
+          onChangePage(newPage);
           cube?.current?.scrollTo(newPage);
         } else {
           setIsModalOpen(false);
           setCurrentPage(0);
+          onChangePage(0);
           if (onClose) {
             onClose(selectedData[selectedData.length - 1]);
           }
@@ -82,8 +85,10 @@ export const Story = ({
         if (newPage < 0) {
           setIsModalOpen(false);
           setCurrentPage(0);
+          onChangePage(0);
         } else {
           setCurrentPage(newPage);
+          onChangePage(newPage);
           cube?.current?.scrollTo(newPage);
         }
       }
@@ -123,6 +128,7 @@ export const Story = ({
           callBackAfterSwipe={(x: any) => {
             if (x != currentPage) {
               setCurrentPage(parseInt(x));
+              onChangePage(parseInt(x))
             }
           }}
         >
@@ -136,6 +142,7 @@ export const Story = ({
           callBackAfterSwipe={(x: any) => {
             if (x != currentPage) {
               setCurrentPage(parseInt(x));
+              onChangePage(parseInt(x))
             }
           }}
         >
