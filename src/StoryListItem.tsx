@@ -226,7 +226,7 @@ export const StoryListItem = ({
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <TouchableOpacity onPress={() => {
               if (onPressAvatar) {
-                onPressAvatar(index);
+                onPressAvatar();
               }
             }}>
               <Image style={styles.avatarImage} source={{ uri: profileImage }} />
