@@ -35,6 +35,7 @@ export const StoryListItem = ({
   onFinish,
   onClosePress,
   onPressAvatar,
+  onReport,
   stories,
   currentPage,
   ...props
@@ -235,6 +236,9 @@ export const StoryListItem = ({
           </View>
           <TouchableOpacity
             onPress={() => {
+              if (onReport) {
+                onReport(current);
+              }
               if (onClosePress) {
                 onClosePress(current);
               }
