@@ -381,6 +381,7 @@ export const StoryListItem = ({
           )}
         </TouchableOpacity>
       )}
+      {InputView()}
     </GestureRecognizer>
   );
 };
