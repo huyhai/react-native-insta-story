@@ -26,6 +26,7 @@ export const Story = ({
   renderHeader,
   onChangePage,
   onPressAvatar,
+  onClosePress,
 }: StoryProps) => {
   const [dataState, setDataState] = useState<IUserStory[]>(data);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -121,6 +122,7 @@ export const Story = ({
             if (onClose) {
               onClose(x);
             }
+            onClosePress();
           }}
           onPressAvatar={()=>_onPressAvatar(x)}
           index={i}
