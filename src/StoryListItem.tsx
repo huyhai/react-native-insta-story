@@ -34,6 +34,7 @@ export const StoryListItem = ({
   customSwipeUpComponent,
   onFinish,
   onClosePress,
+  onPressAvatar,
   stories,
   currentPage,
   ...props
@@ -223,7 +224,13 @@ export const StoryListItem = ({
         </View>
         <View style={styles.userContainer}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image style={styles.avatarImage} source={{ uri: profileImage }} />
+            <TouchableOpacity onPress={() => {
+              if (onPressAvatar) {
+                onPressAvatar(index);
+              }
+            }}>
+              <Image style={styles.avatarImage} source={{ uri: profileImage }} />
+            </TouchableOpacity>
             <Text style={styles.avatarText}>{profileName + ' ~ ' + timeLabel}</Text>
           </View>
           <TouchableOpacity
