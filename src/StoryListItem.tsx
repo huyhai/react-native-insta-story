@@ -236,7 +236,7 @@ export const StoryListItem = ({
           <TouchableOpacity
             onPress={() => {
               if (onClosePress) {
-                onClosePress();
+                onClosePress(current);
               }
             }}
           >
