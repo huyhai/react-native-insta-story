@@ -23,6 +23,9 @@ import {
 } from './interfaces';
 
 const { width, height } = Dimensions.get('window');
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Modal from 'react-native-modal';
+import {Input} from 'react-native-elements';
 
 export const StoryListItem = ({
   index,
@@ -37,6 +40,7 @@ export const StoryListItem = ({
   onPressAvatar,
   onReport,
   stories,
+  onSend,
   currentPage,
   ...props
 }: StoryListItemProps) => {
@@ -181,6 +185,81 @@ export const StoryListItem = ({
   const swipeText =
     content?.[current]?.swipeText || props.swipeText || 'Swipe Up';
   const timeLabel = content?.[current]?.timeLabel;
+  
+  const InputView = () => {
+    const [text, setText] = useState('');
+    const [show, setShow] = useState(false);
+  
+    const animateIcon = text2 => {
+      setText(text + String.fromCodePoint(text2));
+    };
+    const onSendT = text => {
+      setText('');
+      onSend(text, current);
+    };
+    const showModal = () => {
+      return (
+        <Modal
+        isVisible={show}
+          onBackdropPress={() => setShow(false)}
+          avoidKeyboard
+          swipeDirection="down"
+          style={{justifyContent: 'flex-end'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <Input
+              containerStyle={{flex: 8, justifyContent: 'center'}}
+              placeholder="Aa..."
+              placeholderTextColor={'white'}
+              value={text}
+              autoFocus
+              onChangeText={text => setText(text)}
+              inputStyle={styles.in}
+              inputContainerStyle={styles.input}
+            />
+            <TouchableOpacity
+              onPress={() => onSendT(text)}
+              style={{flex: 2, alignItems: 'center', marginTop: 3}}>
+              <Icon name="send" size={35} color="white" />
+            </TouchableOpacity>
+          </View>
+        </Modal>
+      );
+    };
+    return (
+      <View style={[styles.v, {paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,}]}>
+        <Text onPress={() => animateIcon('9829')} style={styles.ic}>
+          &#9829;
+        </Text>
+        <Text onPress={() => animateIcon('128558')} style={styles.ic}>
+          &#128558;
+        </Text>
+        <Text onPress={() => animateIcon('128514')} style={styles.ic}>
+          &#128514;
+        </Text>
+        <Text onPress={() => animateIcon('128546')} style={styles.ic}>
+          &#128546;
+        </Text>
+        <Text onPress={() => animateIcon('128545')} style={styles.ic}>
+          &#128545;
+        </Text>
+        <TouchableOpacity
+          onPress={() => setShow(true)}
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Icon name="android-messages" size={30} color="white" />
+        </TouchableOpacity>
+        {showModal()}
+      </View>
+    );
+  }
   
   return (
     <GestureRecognizer
