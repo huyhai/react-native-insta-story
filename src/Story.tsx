@@ -117,12 +117,12 @@ export const Story = ({
           swipeText={swipeText}
           customSwipeUpComponent={customSwipeUpComponent}
           customCloseComponent={customCloseComponent}
-          onClosePress={() => {
+          onClosePress={(current) => {
             setIsModalOpen(false);
             if (onClose) {
               onClose(x);
             }
-            onClosePress();
+            onClosePress(x, current);
           }}
           onPressAvatar={()=>_onPressAvatar(x)}
           index={i}
