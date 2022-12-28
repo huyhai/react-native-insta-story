@@ -95,7 +95,13 @@ export const Story = ({
       }
     }
   }
-
+  const _onPressAvatar = (x) => {
+    setIsModalOpen(false);
+    if (onClose) {
+      onClose(x);
+    }
+    onPressAvatar(x)
+  }
   const renderStoryList = () =>
     selectedData.map((x, i) => {
       return (
@@ -116,7 +122,7 @@ export const Story = ({
               onClose(x);
             }
           }}
-          onPressAvatar={onPressAvatar}
+          onPressAvatar={()=>_onPressAvatar(x)}
           index={i}
         />
       );
