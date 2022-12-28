@@ -28,6 +28,7 @@ export const Story = ({
   onPressAvatar,
   onReport,
   input,
+  onSend,
 }: StoryProps) => {
   const [dataState, setDataState] = useState<IUserStory[]>(data);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -129,10 +130,8 @@ export const Story = ({
             onReport={(current)=>onReport(x,current)}
             onPressAvatar={()=>_onPressAvatar(x)}
             index={i}
+            onSend={(text, current)=> onSend(text, current, x.stories[current])}
           />
-          <View>
-             {input}
-          </View>
         </>
       );
     });
