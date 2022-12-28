@@ -463,4 +463,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: Platform.OS == 'ios' ? 20 : 50,
   },
+  input: {
+    borderBottomColor: 'transparent',
+    backgroundColor: 'rgba(0,0,0, 0.3)',
+    borderRadius: 20,
+  },
+  in: {
+    color: 'white',
+    paddingHorizontal: 10,
+    height: 40,
+    fontSize: 14,
+  },
+  ic: {fontSize: 25, color: 'red'},
+  v: {
+    paddingVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
 });
