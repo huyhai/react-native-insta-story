@@ -27,6 +27,7 @@ export const Story = ({
   onChangePage,
   onPressAvatar,
   onReport,
+  input,
 }: StoryProps) => {
   const [dataState, setDataState] = useState<IUserStory[]>(data);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -106,28 +107,33 @@ export const Story = ({
   const renderStoryList = () =>
     selectedData.map((x, i) => {
       return (
-        <StoryListItem
-          duration={duration * 1000}
-          key={i}
-          profileName={x.user_name}
-          profileImage={x.user_image}
-          stories={x.stories}
-          currentPage={currentPage}
-          onFinish={onStoryFinish}
-          swipeText={swipeText}
-          customSwipeUpComponent={customSwipeUpComponent}
-          customCloseComponent={customCloseComponent}
-          onClosePress={(current) => {
-            setIsModalOpen(false);
-            if (onClose) {
-              onClose(x);
-            }
-           
-          }}
-          onReport={(current)=>onReport(x,current)}
-          onPressAvatar={()=>_onPressAvatar(x)}
-          index={i}
-        />
+        <>
+          <StoryListItem
+            duration={duration * 1000}
+            key={i}
+            profileName={x.user_name}
+            profileImage={x.user_image}
+            stories={x.stories}
+            currentPage={currentPage}
+            onFinish={onStoryFinish}
+            swipeText={swipeText}
+            customSwipeUpComponent={customSwipeUpComponent}
+            customCloseComponent={customCloseComponent}
+            onClosePress={(current) => {
+              setIsModalOpen(false);
+              if (onClose) {
+                onClose(x);
+              }
+
+            }}
+            onReport={(current)=>onReport(x,current)}
+            onPressAvatar={()=>_onPressAvatar(x)}
+            index={i}
+          />
+          <View>
+             {input}
+          </View>
+        </>
       );
     });
 
