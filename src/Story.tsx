@@ -109,32 +109,30 @@ export const Story = ({
   const renderStoryList = () =>
     selectedData.map((x, i) => {
       return (
-        <>
-          <StoryListItem
-            duration={duration * 1000}
-            key={i}
-            profileName={x.user_name}
-            profileImage={x.user_image}
-            stories={x.stories}
-            currentPage={currentPage}
-            onFinish={onStoryFinish}
-            swipeText={swipeText}
-            customSwipeUpComponent={customSwipeUpComponent}
-            customCloseComponent={customCloseComponent}
-            onClosePress={(current) => {
-              setIsModalOpen(false);
-              if (onClose) {
-                onClose(x);
-              }
+        <StoryListItem
+          duration={duration * 1000}
+          key={i}
+          profileName={x.user_name}
+          profileImage={x.user_image}
+          stories={x.stories}
+          currentPage={currentPage}
+          onFinish={onStoryFinish}
+          swipeText={swipeText}
+          customSwipeUpComponent={customSwipeUpComponent}
+          customCloseComponent={customCloseComponent}
+          onClosePress={(current) => {
+            setIsModalOpen(false);
+            if (onClose) {
+              onClose(x);
+            }
 
-            }}
-            onReport={(current)=>onReport(x,current)}
-            onPressAvatar={()=>_onPressAvatar(x)}
-            index={i}
-            onSend={(text, current)=> onSend(text, current, x)}
-            showInput={myUid !== x.user_id}
-          />
-        </>
+          }}
+          onReport={(current)=>onReport(x,current)}
+          onPressAvatar={()=>_onPressAvatar(x)}
+          index={i}
+          onSend={(text, current)=> onSend(text, current, x)}
+          showInput={myUid !== x.user_id}
+        />
       );
     });
 
