@@ -26,6 +26,7 @@ const { width, height } = Dimensions.get('window');
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from 'react-native-modal';
 import {Input} from 'react-native-elements';
+import FloatingHearts from 'react-native-floating-hearts';
 
 export const StoryListItem = ({
   index,
@@ -47,6 +48,7 @@ export const StoryListItem = ({
 }: StoryListItemProps) => {
   const [load, setLoad] = useState<boolean>(true);
   const [pressed, setPressed] = useState<boolean>(false);
+  const [count, setCount] = useState(0);
   const [content, setContent] = useState<IUserStoryItem[]>(
     stories.map((x) => ({
       ...x,
@@ -234,19 +236,19 @@ export const StoryListItem = ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 16,}]}>
-        <Text onPress={() => animateIcon('9829')} style={styles.ic}>
+        <Text onPress={() => onSendT('9829')} style={styles.ic}>
           &#9829;
         </Text>
-        <Text onPress={() => animateIcon('128558')} style={styles.ic}>
+        <Text onPress={() => onSendT('128558')} style={styles.ic}>
           &#128558;
         </Text>
-        <Text onPress={() => animateIcon('128514')} style={styles.ic}>
+        <Text onPress={() => onSendT('128514')} style={styles.ic}>
           &#128514;
         </Text>
-        <Text onPress={() => animateIcon('128546')} style={styles.ic}>
+        <Text onPress={() => onSendT('128546')} style={styles.ic}>
           &#128546;
         </Text>
-        <Text onPress={() => animateIcon('128545')} style={styles.ic}>
+        <Text onPress={() => onSendT('128545')} style={styles.ic}>
           &#128545;
         </Text>
         <TouchableOpacity
@@ -383,6 +385,12 @@ export const StoryListItem = ({
         </TouchableOpacity>
       )}
       {showInput && InputView()}
+      <FloatingHearts
+        count={count}
+        renderCustomShape={() => {
+          return <Icon name="heart" size={100} color={'red'} />;
+        }}
+      />
     </GestureRecognizer>
   );
 };
