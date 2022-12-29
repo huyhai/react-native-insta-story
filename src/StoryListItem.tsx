@@ -200,6 +200,7 @@ export const StoryListItem = ({
     const onSendT = text => {
       setText('');
       onSend(text, current);
+      setShow(false);
     };
     const onSendEmoji = (text, index) => {
       setText('');
