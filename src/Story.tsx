@@ -29,6 +29,7 @@ export const Story = ({
   onReport,
   input,
   onSend,
+  myUid,
 }: StoryProps) => {
   const [dataState, setDataState] = useState<IUserStory[]>(data);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -131,6 +132,7 @@ export const Story = ({
             onPressAvatar={()=>_onPressAvatar(x)}
             index={i}
             onSend={(text, current)=> onSend(text, current, x)}
+            showInput={myUid !== x.user_id}
           />
         </>
       );
