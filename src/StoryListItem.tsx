@@ -41,6 +41,7 @@ export const StoryListItem = ({
   onReport,
   stories,
   onSend,
+  showInput,
   currentPage,
   ...props
 }: StoryListItemProps) => {
@@ -381,7 +382,7 @@ export const StoryListItem = ({
           )}
         </TouchableOpacity>
       )}
-      {InputView()}
+      {showInput && InputView()}
     </GestureRecognizer>
   );
 };
