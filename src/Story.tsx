@@ -130,7 +130,7 @@ export const Story = ({
             onReport={(current)=>onReport(x,current)}
             onPressAvatar={()=>_onPressAvatar(x)}
             index={i}
-            onSend={(text, current)=> onSend(text, current, x.stories[current])}
+            onSend={(text, current)=> onSend(text, current, x)}
           />
         </>
       );
