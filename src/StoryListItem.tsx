@@ -203,7 +203,7 @@ export const StoryListItem = ({
     };
     const onSendEmoji = (text, index) => {
       setText('');
-      onSend(text, current);
+      onSend(String.fromCodePoint(text), current);
       let ic ='';
       if(index === 1){
         ic=<Icon name="heart" size={100} color={'red'} />;
