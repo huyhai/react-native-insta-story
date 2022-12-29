@@ -49,6 +49,7 @@ export const StoryListItem = ({
   const [load, setLoad] = useState<boolean>(true);
   const [pressed, setPressed] = useState<boolean>(false);
   const [count, setCount] = useState(0);
+  const [icon, setIcon] = useState(null);
   const [content, setContent] = useState<IUserStoryItem[]>(
     stories.map((x) => ({
       ...x,
@@ -200,6 +201,24 @@ export const StoryListItem = ({
       setText('');
       onSend(text, current);
     };
+    const onSendEmoji = (text, index) => {
+      setText('');
+      onSend(text, current);
+      let ic ='';
+      if(index === 1){
+        ic=<Icon name="heart" size={100} color={'red'} />;
+      }else if(index===2){
+        ic= <Text style={styles.ic, {fontSize: 100}}>&#128558;</Text>
+      }else if(index===3){
+        ic= <Text style={styles.ic, {fontSize: 100}}>&#128514;</Text>
+      }else if(index===4){
+        ic= <Text style={styles.ic, {fontSize: 100}}>&#128546;</Text>
+      }else if(index===5){
+        ic= <Text style={styles.ic, {fontSize: 100}}>&#128545;</Text>
+      }
+      setIcon(ic);
+      setCount(count+1);
+    };
     const showModal = () => {
       return (
         <Modal
@@ -236,19 +255,19 @@ export const StoryListItem = ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 16,}]}>
-        <Text onPress={() => onSendT('9829')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('9829')} style={styles.ic}>
           &#9829;
         </Text>
-        <Text onPress={() => onSendT('128558')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128558')} style={styles.ic}>
           &#128558;
         </Text>
-        <Text onPress={() => onSendT('128514')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128514')} style={styles.ic}>
           &#128514;
         </Text>
-        <Text onPress={() => onSendT('128546')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128546')} style={styles.ic}>
           &#128546;
         </Text>
-        <Text onPress={() => onSendT('128545')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128545')} style={styles.ic}>
           &#128545;
         </Text>
         <TouchableOpacity
@@ -388,7 +407,7 @@ export const StoryListItem = ({
       <FloatingHearts
         count={count}
         renderCustomShape={() => {
-          return <Icon name="heart" size={100} color={'red'} />;
+          return icon;
         }}
       />
     </GestureRecognizer>
