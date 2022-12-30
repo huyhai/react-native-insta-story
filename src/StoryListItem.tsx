@@ -429,7 +429,7 @@ const styles = StyleSheet.create({
   image: {
     width: width,
     height: height,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   backgroundContainer: {
     position: 'absolute',
