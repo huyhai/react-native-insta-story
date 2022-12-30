@@ -27,6 +27,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from 'react-native-modal';
 import {Input} from 'react-native-elements';
 import FloatingHearts from 'react-native-floating-hearts';
+import Moment from 'moment';
 
 export const StoryListItem = ({
   index,
@@ -188,7 +189,8 @@ export const StoryListItem = ({
 
   const swipeText =
     content?.[current]?.swipeText || props.swipeText || 'Swipe Up';
-  const timeLabel = content?.[current]?.timeLabel;
+  const timeLabel = Moment(parseInt(content?.[current]?.timeLabel || 0)).fromNow();
+
   
   const InputView = () => {
     const [text, setText] = useState('');
