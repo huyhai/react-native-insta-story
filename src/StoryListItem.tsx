@@ -494,7 +494,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomColor: 'transparent',
-    backgroundColor: 'rgba(0,0,0, 0.3)',
+    backgroundColor: 'rgba(150,150,150, 0.3)',
     borderRadius: 20,
   },
   in: {
