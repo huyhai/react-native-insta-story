@@ -256,19 +256,19 @@ export const StoryListItem = ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 16,}]}>
-        <Text onPress={() => onSendEmoji('9829')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('9829', 1)} style={styles.ic}>
           &#9829;
         </Text>
-        <Text onPress={() => onSendEmoji('128558')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128558', 2)} style={styles.ic}>
           &#128558;
         </Text>
-        <Text onPress={() => onSendEmoji('128514')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128514', 3)} style={styles.ic}>
           &#128514;
         </Text>
-        <Text onPress={() => onSendEmoji('128546')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128546', 4)} style={styles.ic}>
           &#128546;
         </Text>
-        <Text onPress={() => onSendEmoji('128545')} style={styles.ic}>
+        <Text onPress={() => onSendEmoji('128545', 5)} style={styles.ic}>
           &#128545;
         </Text>
         <TouchableOpacity
