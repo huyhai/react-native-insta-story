@@ -407,12 +407,14 @@ export const StoryListItem = ({
         </TouchableOpacity>
       )}
       {showInput && InputView()}
-      <FloatingHearts
-        count={count}
-        renderCustomShape={() => {
-          return icon;
-        }}
-      />
+      {showInput && (
+        <FloatingHearts
+          count={count}
+          renderCustomShape={() => {
+            return icon;
+          }}
+        />
+      )}
     </GestureRecognizer>
   );
 };
